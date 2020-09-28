@@ -29,12 +29,10 @@ void quickSort(int arr[], int low, int high)
             }
         }
         i++;
-        cout << "Loop Ended" << endl;
         cout << arr[i] << ", " << arr[high] << endl;
         int tmp = arr[i];
 		arr[i] = arr[high];
 		arr[high] = tmp;
-        printArray(arr, 15);
 
         quickSort(arr, low, i - 1);
         quickSort(arr, i + 1, high);
