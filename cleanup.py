@@ -15,20 +15,20 @@ def main(args):
     filename = args[1]
 
     newfilename = "clean-" + filename
-    open(newfilename, 'w').close()
-    destination = open(newfilename, "a")
+    open(newfilename, 'w').close()              # Clear any previously cleaned files
+    destination = open(newfilename, "a")        # Create a new file to append lines to
 
     try:
-        source = open(filename, "r")
+        source = open(filename, "r")            # Open source file
     except FileNotFoundError as e:
         print ("File", filename, "not found")
         exit()
     else:
         try:
-            content = source.readlines()
+            content = source.readlines()        # Read source line by line
             for line in content:
-                newline = line.split('#')[0]
-                newline = newline.strip()
+                newline = line.split('#')[0]    # Split line on '#' comments
+                newline = newline.strip()       # Remove extra whitespace
                 if (len(newline) != len(line)): newline += '\n'
                 destination.write(newline)
         finally:
