@@ -29,7 +29,7 @@ ADD R3, R3, R1          # R3 now equals the last number in the array?
 ADDI R3, R3, -4         # R3 NOW equals the last number in the array
 ADDI R30, R0, 5000      # Stack starts at 5000
 --
-JAL QuickSort           # Acutal call to recursive quickSort function
+JAL QuickSort           # Actual call to recursive QuickSort function
 J End                   # Once the above call returns, jump to end
 --
 LABEL QuickSort
@@ -69,17 +69,19 @@ SW R4, 0(R13)           # &arr[i] = pivot
 SW R7, 0(R3)            # arr[i] = arr[high]
 --
 SW R3, 0(R30)           # Save high
-SW R5, 4(R30)           # Save i (pi)
+SW R5, 4(R30)           # Save i
 ADDI R30, R30, 8        # Post Increment
 --
-ADDI R3, R5, -4         # high = pi - 1, except pi is an index
+ADDI R3, R5, -4         # high = i - 1, except i is an index
 ADD R3, R3, R1          # high is an address now
-JAL QuickSort
+JAL QuickSort           # call quicksort recursively
 --
 ADDI R30, R30, -8       # Pre decrement for simplicity
 LW R3, 0(R30)           # high = pop high
-LW R2, 4(R30)           # low = pop pi
-ADDI R2, R2, 4          # low = pi + 1 
+LW R2, 4(R30)           # low = pop i
+ADDI R2, R2, 4          # low = i + 1, except i is an index
+ADD R2, R2, R1          # low is an address now
+JAL QuickSort           # Call QuickSort recursively
 --
 LABEL EndOfQS
 ADDI R30, R30, -4       # Pre decrement for consistency
