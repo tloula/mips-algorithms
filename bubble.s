@@ -47,8 +47,8 @@ J OuterLoop             # goes back to top of outer loop
 LABEL PostOuter
 HALT
 End Assembly
-Begin Data 4000 68
-16
+Begin Data 4000 128
+32
 844
 757
 420
@@ -65,4 +65,20 @@ Begin Data 4000 68
 755
 618
 250
+909
+982
+810
+902
+310
+729
+898
+683
+472
+100
+434
+610
+913
+966
+477
+865
 End Data
